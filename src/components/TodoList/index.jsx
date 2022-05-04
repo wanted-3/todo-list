@@ -24,12 +24,19 @@ function TodoList() {
     })
   }
 
+  const handleDelete = (e) => {
+    const {id} = e.currentTarget.dataset
+
+    setTodoList((todoLists) => todoLists.filter((listItem) => listItem.id !== Number(id)))
+  }
+
   return (
     <div className={styles.todoList}>
       <div className={styles.centering}>
         <h1>Hi! this is your assignment.</h1>
         <ul className={styles.tasks}>
           <p className={styles.tasksTitle}>Today&apos;s</p>
+
           {todoList.map((todo) => (
             <li key={`todo-${todo.id}`} className={styles.task}>
               <div className={styles.checkboxWrapper}>
@@ -37,6 +44,7 @@ function TodoList() {
                 <CheckIcon />
               </div>
               <p className={styles.title}>{todo.title}</p>
+              <button type='button' data-id={todo.id} onClick={handleDelete}>X</button>
             </li>
           ))}
         </ul>

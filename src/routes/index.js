@@ -1,10 +1,17 @@
+import { Route, Routes } from 'react-router-dom'
+import AddTodo from './addTodo/AddTodo'
+import Home from './home/Home'
+import ModifyTodo from './modifyTodo/ModifyTodo'
 import styles from './Routes.module.scss'
-import TodoList from './TodoList'
 
 function App() {
   return (
     <div className={styles.app}>
-      <TodoList />
+      <Routes>
+        <Route path='/todo/add' element={<AddTodo />} />
+        <Route path='/todo/modify' element={<ModifyTodo />} />
+        <Route path='/' element={<Home />} />
+      </Routes>
     </div>
   )
 }

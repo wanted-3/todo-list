@@ -1,8 +1,8 @@
 
 function SmallButton(props) {
   return (
-    <button type="button">
-      small button 
+    <button type='button'>
+      button
     </button>
   )
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import styles from './TodoList.module.scss'
 import { CheckIcon } from '../../assets/svgs'
 import DUMMY from '../../data/todos.json'
@@ -7,6 +7,12 @@ const INIT_TODO = DUMMY
 
 function TodoList() {
   const [todoList, setTodoList] = useState(INIT_TODO)
+  const [todoToggle, setTodoToggle] = useState(false)
+
+  const filteredList = useMemo(
+    () => (todoToggle ? todoList.filter(({ done }) => !done) : todoList),
+    [todoToggle, todoList]
+  )
 
   const handleAddClick = (e) => {
     // console.log('handleAddClick')
@@ -25,9 +31,13 @@ function TodoList() {
   }
 
   const handleDelete = (e) => {
-    const {id} = e.currentTarget.dataset
+    const { id } = e.currentTarget.dataset
 
     setTodoList((todoLists) => todoLists.filter((listItem) => listItem.id !== Number(id)))
+  }
+
+  const handleToggle = () => {
+    setTodoToggle((prev) => !prev)
   }
 
   return (
@@ -36,15 +46,18 @@ function TodoList() {
         <h1>Hi! this is your assignment.</h1>
         <ul className={styles.tasks}>
           <p className={styles.tasksTitle}>Today&apos;s</p>
-
-          {todoList.map((todo) => (
+          <input type='checkbox' className={styles.toggle} id='toggle' onChange={handleToggle} />
+          <label htmlFor='toggle'>toggle</label>
+          {filteredList.map((todo) => (
             <li key={`todo-${todo.id}`} className={styles.task}>
               <div className={styles.checkboxWrapper}>
                 <input type='checkbox' checked={todo.done} data-id={todo.id} onChange={handleChange} />
                 <CheckIcon />
               </div>
               <p className={styles.title}>{todo.title}</p>
-              <button type='button' data-id={todo.id} onClick={handleDelete}>X</button>
+              <button type='button' data-id={todo.id} onClick={handleDelete}>
+                X
+              </button>
             </li>
           ))}
         </ul>

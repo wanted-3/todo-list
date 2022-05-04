@@ -1,0 +1,13 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/position';
+@use '/src/styles/constants/sizes';
+
+.container {
+  position: relative;
+  width: 360px;
+  height: sizes.$APP_HEIGHT;
+  max-height: sizes.$APP_HEIGHT;
+  padding: 0 40px 40px;
+  background-color: #fafbfe;
+  border-radius: 60px;
+}

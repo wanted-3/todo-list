@@ -1,8 +1,9 @@
+import { UpperArrow } from '../../assets/svgs'
 
-function SmallButton(props) {
+function SmallButton() {
   return (
     <button type='button'>
-      button
+      <UpperArrow />
     </button>
   )
 }

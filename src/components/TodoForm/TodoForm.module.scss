@@ -1,0 +1,43 @@
+@use '/src/styles/constants/colors';
+.todoForm {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.addForm {
+  height: 300px;
+  padding: 20px;
+  z-index: 10;
+  .addInput {
+    width: 80%;
+    margin: 20px;
+  }
+  .datePickButton {
+    width: 140px;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid colors.$GRAYA;
+    border-radius: 20px;
+    padding: 15px;
+    margin: 20px;
+    background-color: colors.$WHITE;
+    color: colors.$GRAYA;
+
+    .calendarIcon {
+      fill: colors.$GRAYA;
+      width: 15px;
+      height: 15px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.footerButton {
+  position: absolute;
+  right: 40px;
+  bottom: 60px;
+}

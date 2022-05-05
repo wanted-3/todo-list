@@ -1,9 +1,13 @@
+import { XIcon } from '../../assets/svgs'
+import styles from './smallButton.module.scss'
 
-function SmallButton(props) {
+function SmallButton() {
   return (
-    <button type="button">
-      small button 
-    </button>
+    <div className={styles.smallBContainer}>
+      <button type='button' className={styles.closeButton}>
+        <XIcon className={styles.xicon} />
+      </button>
+    </div>
   )
 }
 

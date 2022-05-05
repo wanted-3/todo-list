@@ -1,0 +1,40 @@
+.headerWrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 360px;
+    height: 20px;
+    z-index: 1;
+    @include position.absolute(7% 0 0 0)
+}
+.MenuIcon{
+    color: colors.$GRAYA;
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+}
+.SearchIcon{
+    color: colors.$GRAYA;
+    width: 25px;
+    height: 25px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.SearchInput{
+    border: 1px solid colors.$GRAYA;
+    padding: 2px;
+}
+:focus{
+    animation-name: border-focus;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes border-focus{
+    from{
+        border-radius: 0;
+    }
+    to{
+        border-radius: 15px;
+        border: 1px solid colors.$BLUE;
+    }
+}

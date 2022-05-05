@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeftIcon, SearchIcon } from '../../assets/svgs'
-import styles from './styles.module.scss'
+import styles from './SearchBar.module.scss'
 
 function SearchBar({ searchValue, setSearchValue }) {
   const navigate = useNavigate()

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { MenuIcon, SearchIcon } from '../../../assets/svgs'
 import styles from './Header.module.scss'
 
@@ -8,9 +9,9 @@ function Header() {
         <button type='button' className={styles.button}>
           <MenuIcon />
         </button>
-        <button type='button' className={styles.button}>
+        <Link to='/search' className={styles.button}>
           <SearchIcon />
-        </button>
+        </Link>
       </div>
     </header>
   )

@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types'
 import { SearchIcon } from '../../assets/svgs'
 import styles from './styles.module.scss'
-import PropTypes from 'prop-types'
 
 function SearchBar({ searchValue, setSearchValue }) {
   const handleChange = (e) => {

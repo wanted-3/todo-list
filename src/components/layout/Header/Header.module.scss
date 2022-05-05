@@ -3,12 +3,14 @@
 @use '/src/styles/constants/sizes';
 
 .container {
+  display: flex;
+  align-items: center;
   height: sizes.$HEADER_HEIGHT;
-  padding: 40px 0;
 }
 
 .buttonBox {
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
 }
 

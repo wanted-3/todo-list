@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import BigButton from '../BigButton/BigButton'
 import DatePicker from 'react-datepicker'
 import { Calendar } from '../../assets/svgs'
 import styles from './TodoForm.module.scss'
 import 'react-datepicker/dist/react-datepicker.css'
+import PropsTypes from 'prop-types'
 
+// eslint-disable-next-line react/prop-types
 function TodoForm({ todoValue, todoDate }) {
   const [inputValue, setInputValue] = useState('')
   const [date, setdate] = useState(todoDate || new Date())

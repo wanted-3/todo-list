@@ -1,0 +1,35 @@
+.addTodoPage {
+  position: relative;
+  width: 360px;
+  height: 720px;
+  padding: 120px 40px 40px;
+  background-color: #fafbfe;
+  border-radius: 60px;
+
+  .button {
+    position: absolute;
+    top: 50px;
+    right: 40px;
+  }
+
+  .modifyGuide {
+    font-weight: bold;
+
+    p:first-child {
+      font-size: 2em;
+      font-style: italic;
+      color: #8d99ff;
+      margin-bottom: 10px;
+    }
+
+    p:nth-child(2) {
+      font-size: 4em;
+      width: 100%;
+
+      div {
+        margin-top: 30px;
+        text-align: center;
+      }
+    }
+  }
+}

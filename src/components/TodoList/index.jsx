@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { cx } from '../../styles'
 import styles from './TodoList.module.scss'
 import { CheckIcon } from '../../assets/svgs'
 import DUMMY from '../../data/todos.json'
@@ -54,7 +55,7 @@ function TodoList() {
                 <input type='checkbox' checked={todo.done} data-id={todo.id} onChange={handleChange} />
                 <CheckIcon />
               </div>
-              <p className={`${todo.done ? styles.checked_todo : styles.title}`}>{todo.title}</p>
+              <p className={cx(styles.title, {[styles.checked]: todo.done})}>{todo.title}</p>
               <button type='button' data-id={todo.id} onClick={handleDelete} aria-label='Delete button'>
                 X
               </button>

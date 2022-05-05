@@ -1,10 +1,5 @@
-
 function SmallButton(props) {
-  return (
-    <button type="button">
-      small button 
-    </button>
-  )
+  return <button type='button'>button</button>
 }
 
 export default SmallButton

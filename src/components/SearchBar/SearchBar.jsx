@@ -1,18 +1,32 @@
 import PropTypes from 'prop-types'
-import { SearchIcon } from '../../assets/svgs'
+import { useNavigate } from 'react-router-dom'
+import { ArrowLeftIcon, SearchIcon } from '../../assets/svgs'
 import styles from './styles.module.scss'
 
 function SearchBar({ searchValue, setSearchValue }) {
+  const navigate = useNavigate()
+
   const handleChange = (e) => {
     setSearchValue(e.target.value)
   }
 
+  const handleBackBtnClick = () => {
+    navigate(-1)
+  }
+
+  const handleSearchBtnClick = () => {
+    alert('search!')
+  }
+
   return (
     <header className={styles.container}>
+      <button onClick={handleBackBtnClick} type='button' className={styles.button}>
+        <ArrowLeftIcon />
+      </button>
       <div className={styles.inputContainer}>
         <input value={searchValue} onChange={handleChange} className={styles.input} placeholder='search' />
       </div>
-      <button type='button' className={styles.button}>
+      <button onClick={handleSearchBtnClick} type='button' className={styles.button}>
         <SearchIcon />
       </button>
     </header>

@@ -1,10 +1,8 @@
-import { forwardRef, useState } from 'react'
-
+import { useState } from 'react'
 import styles from './TodoForm.module.scss'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Calendar } from '../../assets/svgs'
-import moment from 'moment'
 
 const dummy = {
   id: 1,

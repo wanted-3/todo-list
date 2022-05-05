@@ -21,7 +21,7 @@ function TodoForm({ todoValue, todoDate }) {
   }
 
   // datePicker click
-  const dateClickHandler = (e) => {
+  const dateClickHandler = () => {
     setIsOpen((_isOpen) => !_isOpen)
   }
   // date change

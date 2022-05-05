@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import SmallButton from '../SmallButton/SmallButton'
 import BigButton from '../BigButton/BigButton'
 import DatePicker from 'react-datepicker'
 import { Calendar } from '../../assets/svgs'
@@ -42,6 +44,11 @@ function TodoForm() {
   return (
     <div className={styles.todoForm}>
       <div className={styles.addForm}>
+        <div className={styles.button}>
+          <Link to="/">
+            <SmallButton />
+          </Link>
+        </div>
         <input name="input" className={styles.addInput} onChange={handleValue} value={inputValue} type="text" placeholder="Enter new task"/>
         <button className={styles.datePickButton} type='button' onClick={dateClickHandler}>
           <span className={styles.calendarIcon}>

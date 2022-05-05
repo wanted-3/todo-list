@@ -3,10 +3,11 @@ import BigButton from '../BigButton/BigButton'
 import DatePicker from 'react-datepicker'
 import { Calendar } from '../../assets/svgs'
 import styles from './TodoForm.module.scss'
+import 'react-datepicker/dist/react-datepicker.css'
 
-function TodoForm() {
+function TodoForm({ todoValue, todoDate }) {
   const [inputValue, setInputValue] = useState('')
-  const [date, setdate] = useState(new Date())
+  const [date, setdate] = useState(todoDate || new Date())
   const [isOpen, setIsOpen] = useState(false)
 
   const handleValue = (e) => {
@@ -23,9 +24,9 @@ function TodoForm() {
     setIsOpen((isOpen) => !isOpen)
   }
   // date change
-  const dateChangeHandler = (e) => {
+  const dateChangeHandler = (date) => {
     setIsOpen((isOpen) => !isOpen)
-    setdate(e)
+    setdate(date)
   }
   // yyyy-mm-dd 포맷 날짜 생성
   const getYmd10 = (d) => {
@@ -41,7 +42,14 @@ function TodoForm() {
   return (
     <div className={styles.todoForm}>
       <div className={styles.addForm}>
-        <input name="input" className={styles.addInput} onChange={handleValue} value={inputValue} type="text" placeholder="Enter new task"/>
+        <input
+          name='input'
+          className={styles.addInput}
+          onChange={handleValue}
+          value={inputValue}
+          type='text'
+          placeholder={todoValue || 'Enter New task'}
+        />
         <button className={styles.datePickButton} type='button' onClick={dateClickHandler}>
           <span className={styles.calendarIcon}>
             <Calendar />
@@ -54,10 +62,10 @@ function TodoForm() {
             showPopperArrow={false}
             selected={date}
             onChange={dateChangeHandler}
-            dateFormat='YY-MM-dd'
+            dateFormat='YYYY-MM-dd'
             inline
-          />)
-        }
+          />
+        )}
       </div>
       <div className={styles.footerButton}>
         <BigButton text='New task' onClick={handleAdd} />

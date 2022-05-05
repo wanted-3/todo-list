@@ -12,14 +12,14 @@
   background-color: #fafbfe;
   border-radius: 60px;
 
+  .centering {
+    height: 100%;
+  }
+
   h1 {
     font-size: 32px;
     font-weight: 600;
     color: colors.$BIG_TITLE;
-  }
-
-  .centering {
-    height: 100%;
   }
 
   .tasksTitle {
@@ -29,6 +29,25 @@
     color: colors.$TASKS_TITLE;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+  }
+
+  .toggleInputWrapper {
+    @include flexbox.flexbox(center center);
+    justify-content: space-around;
+    padding-bottom: 10px;
+    color: colors.$TASKS_TITLE;
+  }
+
+  .toggleLabel {
+    width: 100px;
+    padding: 4px;
+    text-align: center;
+    border-radius: 3px;
+
+    &:hover {
+      cursor: pointer;
+      outline: 2px solid colors.$TASKS_TITLE;
+    }
   }
 
   .tasks {
@@ -91,8 +110,8 @@
     .title {
       width: 100%;
       overflow: hidden;
-      color: colors.$TASK_ITEM_TITLE;
-      text-overflow: ellipsis;
+      color: colors.$TASKS_TITLE;
+      text-decoration: line-through;
       white-space: nowrap;
 
       &.checked {

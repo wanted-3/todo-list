@@ -8,12 +8,24 @@ const INIT_TODO = DUMMY
 
 function TodoList() {
   const [todoList, setTodoList] = useState(INIT_TODO)
-  const [todoToggle, setTodoToggle] = useState(false)
+  const [todoToggle, setTodoToggle] = useState("Alltoggle")
+  
+  const filteredList = useMemo(() => {
+    if (todoToggle==="Alltoggle") {
+      return todoList
+    }
 
-  const filteredList = useMemo(
-    () => (todoToggle ? todoList.filter(({ done }) => !done) : todoList),
-    [todoToggle, todoList]
-  )
+    if(todoToggle==="Activetoggle") {
+      return todoList.filter(({ done }) => done===true)
+    }
+
+    if (todoToggle === 'Completedtoggle'){
+      return todoList.filter(({ done }) => done===false)
+    }
+    
+    return null
+  }, [todoToggle, todoList])
+  
   const handleAddClick = (e) => {
     // console.log('handleAddClick')
   }
@@ -37,8 +49,8 @@ function TodoList() {
     setTodoList((todoLists) => todoLists.filter((listItem) => listItem.id !== Number(id)))
   }
 
-  const handleToggle = () => {
-    setTodoToggle((prev) => !prev)
+  const handleToggle = (e) => {
+    setTodoToggle(e.currentTarget.id)
   }
 
   return (
@@ -46,8 +58,16 @@ function TodoList() {
       <div className={styles.centering}>
         <h1>Hi! this is your assignment.</h1>
         <p className={styles.tasksTitle}>Today&apos;s</p>
-        <input type='checkbox' className={styles.toggle} id='toggle' onChange={handleToggle} />
-        <label htmlFor='toggle'>toggle</label>
+
+        <div className={styles.toggleInputWrapper}>
+          <input type='checkbox' id='Alltoggle' onChange={handleToggle} />
+          <label htmlFor='Alltoggle' className={styles.toggleLabel}>All</label>
+          <input type='checkbox' id='Activetoggle' onChange={handleToggle} />
+          <label htmlFor='Activetoggle' className={styles.toggleLabel}>Active</label>
+          <input type='checkbox' id='Completedtoggle' onChange={handleToggle} />
+          <label htmlFor='Completedtoggle' className={styles.toggleLabel}>Completed</label>
+        </div>
+        
         <ul className={styles.tasks}>
           {filteredList.map((todo) => (
             <li key={`todo-${todo.id}`} className={styles.task}>

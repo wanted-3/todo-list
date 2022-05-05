@@ -8,9 +8,6 @@ import styles from './Routes.module.scss'
 function App() {
   return (
     <div className={styles.app}>
-      <div>
-        <TodoForm />
-      </div>
       <Routes>
         <Route path='/todo/add' element={<AddTodo />} />
         <Route path='/todo/modify' element={<ModifyTodo />} />

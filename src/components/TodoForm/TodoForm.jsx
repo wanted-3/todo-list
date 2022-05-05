@@ -3,11 +3,11 @@ import BigButton from '../BigButton/BigButton'
 import DatePicker from 'react-datepicker'
 import { Calendar } from '../../assets/svgs'
 import styles from './TodoForm.module.scss'
-import moment from 'moment'
 
 function TodoForm() {
   const [inputValue, setInputValue] = useState('')
   const [date, setdate] = useState(new Date())
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleValue = (e) => {
     setInputValue(e.currentTarget.value)

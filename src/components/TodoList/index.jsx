@@ -48,9 +48,6 @@ function TodoList() {
         <input type='checkbox' className={styles.toggle} id='toggle' onChange={handleToggle} />
         <label htmlFor='toggle'>toggle</label>
         <ul className={styles.tasks}>
-          <p className={styles.tasksTitle}>Today&apos;s</p>
-          <input type='checkbox' className={styles.toggle} id='toggle' onChange={handleToggle} />
-          <label htmlFor='toggle'>toggle</label>
           {filteredList.map((todo) => (
             <li key={`todo-${todo.id}`} className={styles.task}>
               <div className={styles.checkboxWrapper}>

@@ -102,11 +102,22 @@
       }
     }
 
-    .deleteButton{
+    .deleteButton {
       padding-right: 14px;
+      visibility: hidden;
+
       svg {
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 10px 20px 0 rgba(colors.$BLACK, 7%);
+
+      svg {
+        visibility: visible;
+        transition: 0.2s;
       }
     }
   }

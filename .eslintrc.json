@@ -32,6 +32,7 @@
     }
   },
   "rules": {
+    "no-alert":"off",
     "prettier/prettier": "warn",
     "arrow-body-style": "off",
     "semi": [

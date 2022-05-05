@@ -14,9 +14,7 @@ function SearchBar({ searchValue, setSearchValue }) {
     navigate(-1)
   }
 
-  const handleSearchBtnClick = () => {
-    alert('search!')
-  }
+  const handleSearchBtnClick = () => {}
 
   return (
     <header className={styles.container}>

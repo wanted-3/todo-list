@@ -1,9 +1,10 @@
 import date from 'date-and-time'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useNavigate } from 'react-router-dom'
+import { v4 } from 'uuid'
 import { Calendar } from '../../assets/svgs'
 import BigButton from '../BigButton/BigButton'
 import styles from './TodoForm.module.scss'
@@ -11,6 +12,7 @@ import styles from './TodoForm.module.scss'
 const today = date.format(new Date(), 'YYYY-MM-DD')
 function TodoForm({ todoValue = '', todoDate, setTodoList, type }) {
   const navigate = useNavigate()
+  const inputRef = useRef(null)
   const [inputValue, setInputValue] = useState(todoValue)
   const [selectedDate, setSelectedDate] = useState(todoDate || today)
   const [isOpen, setIsOpen] = useState(false)
@@ -18,18 +20,25 @@ function TodoForm({ todoValue = '', todoDate, setTodoList, type }) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
+    if (inputValue === '') {
+      alert('todo를 입력해주세요')
+      return
+    }
+
     const newTodo = {
-      id: new Date().getTime(),
+      id: v4(),
       title: inputValue,
       date: selectedDate,
       done: false,
     }
-    if (type === 'add') {
-      setTodoList((prev) => [...prev, newTodo])
-    }
-    // TODO:수정
 
-    alert('todo 추가됬어요!')
+    if (type === 'add') {
+      setTodoList((prev) => {
+        const newTodoList = [...prev, newTodo]
+        return newTodoList
+      })
+    }
+    alert('todo 추가됐어요!')
     navigate('/')
   }
 
@@ -48,10 +57,15 @@ function TodoForm({ todoValue = '', todoDate, setTodoList, type }) {
     setSelectedDate(date.format(_date, 'YYYY-MM-DD'))
   }
 
+  useEffect(() => {
+    inputRef.current.focus()
+  }, [])
+
   return (
     <div className={styles.todoForm}>
       <form onSubmit={handleSubmit} className={styles.addForm}>
         <input
+          ref={inputRef}
           name='input'
           className={styles.addInput}
           onChange={handleInputChange}
@@ -63,7 +77,7 @@ function TodoForm({ todoValue = '', todoDate, setTodoList, type }) {
           <span className={styles.calendarIcon}>
             <Calendar />
           </span>
-          <span>{selectedDate === today ? 'Today' : selectedDate}</span>
+          <span className={styles.calendarText}>{selectedDate === today ? 'Today' : selectedDate}</span>
         </button>
         {isOpen && (
           <DatePicker
@@ -82,6 +96,7 @@ function TodoForm({ todoValue = '', todoDate, setTodoList, type }) {
     </div>
   )
 }
+
 TodoForm.propTypes = {
   todoValue: PropTypes.string,
   todoDate: PropTypes.string,

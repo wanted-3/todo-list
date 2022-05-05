@@ -35,7 +35,7 @@ function Search({ todoList, setTodoList }) {
 Search.propTypes = {
   todoList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
       done: PropTypes.bool,
       title: PropTypes.string,
     })

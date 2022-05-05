@@ -1,37 +1,57 @@
 @use '/src/styles/constants/colors';
+
 .todoForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
 }
+
 .addForm {
+  z-index: 10;
   height: 300px;
   padding: 20px;
-  z-index: 10;
+
   .addInput {
     width: 80%;
     margin: 20px;
+
+    &::placeholder {
+      color: colors.$GRAYA;
+    }
   }
+
   .datePickButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     width: 140px;
     height: 40px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid colors.$GRAYA;
-    border-radius: 20px;
     padding: 15px;
     margin: 20px;
-    background-color: colors.$WHITE;
     color: colors.$GRAYA;
+    background-color: colors.$WHITE;
+    border: 1px solid colors.$GRAYA;
+    border-radius: 20px;
+
+    &:focus:focus-visible {
+      border: 2px solid  colors.$GRAY6;
+
+      .calendarIcon {
+        fill: colors.$GRAY6;
+      }
+
+      .calendarText {
+        color: colors.$GRAY6;
+      }
+    }
 
     .calendarIcon {
-      fill: colors.$GRAYA;
       width: 15px;
       height: 15px;
       margin-right: 10px;
+      fill: colors.$GRAYA;
     }
   }
 }

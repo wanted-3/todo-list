@@ -44,7 +44,7 @@ function Home({ todoList, setTodoList }) {
 Home.propTypes = {
   todoList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
       done: PropTypes.bool,
       title: PropTypes.string,
     })

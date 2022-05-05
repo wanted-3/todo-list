@@ -1,15 +1,27 @@
+@use '/src/styles/constants/colors';
+
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 150px;
   height: 50px;
+  color: colors.$WHITE;
+  background-color: colors.$BLUE;
+  //  #4494ff;
   border-radius: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #4494ff;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-  color: white;
+  box-shadow:
+    rgba(0, 0, 0, 20%) 0 10px 15px -3px,
+    rgba(0, 0, 0, 15%) 0 4px 6px -2px;
+
+  &:focus:focus-visible {
+    /* stylelint-disable-next-line scss/no-global-function-names */
+    background-color: darken(colors.$BLUE, 10);
+    //  #4494ff;
+  }
 }
 
 .buttonText {
-  padding-right: 15px;
+  font-size: 14px;
+  font-weight: bold;
 }

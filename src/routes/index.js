@@ -1,34 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { getLocalStorage, LOCAL_STORAGE_KEY, setLocalStorage } from '../util/localStorageUtil'
 import AddTodo from './addTodo/AddTodo'
 import Home from './home/Home'
 import ModifyTodo from './modifyTodo/ModifyTodo'
 import styles from './Routes.module.scss'
 import Search from './search/Search'
 
-const dummy = [
-  {
-    id: 1,
-    title: 'delectus ',
-    done: false,
-    date: '2022-03-21',
-  },
-  {
-    id: 2,
-    title: 'delectus autem',
-    done: false,
-    date: '2022-03-21',
-  },
-  {
-    id: 3,
-    title: 'delectus aut autem',
-    done: false,
-    date: '2022-03-21',
-  },
-]
-
 function App() {
-  const [todoList, setTodoList] = useState(dummy)
+  // TODO: localStorage에러처리
+  const [todoList, setTodoList] = useState(getLocalStorage(LOCAL_STORAGE_KEY.TODO_LIST))
+
+  useEffect(() => {
+    setLocalStorage(LOCAL_STORAGE_KEY.TODO_LIST, todoList)
+  }, [todoList])
 
   return (
     <div className={styles.app}>

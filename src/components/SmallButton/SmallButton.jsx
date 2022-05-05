@@ -1,9 +1,14 @@
+import { XIcon } from '../../assets/svgs'
+import styles from './smallButton.module.scss'
 
-function SmallButton(props) {
+// eslint-disable-next-line react/prop-types
+function SmallButton() {
   return (
-    <button type="button">
-      small button 
-    </button>
+    <div className={styles.smallBContainer}>
+      <button type='button' className={styles.btn}>
+        <XIcon className={styles.xicon} />
+      </button>
+    </div>
   )
 }
 

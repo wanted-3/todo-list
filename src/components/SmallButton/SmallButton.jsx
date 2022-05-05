@@ -1,9 +1,8 @@
+import styles from './SmallButton.module.scss'
 
 function SmallButton(props) {
   return (
-    <button type="button">
-      small button 
-    </button>
+    <button type="button" aria-label="button" className={styles.closeButton} />
   )
 }
 

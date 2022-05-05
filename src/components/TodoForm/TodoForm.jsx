@@ -42,12 +42,6 @@ function TodoForm(props) {
     return getYmd10(startDate) === new Date(+new Date() + 3240 * 10000).toISOString().split('T')[0]
   }
 
-  // 데이터 확인용
-  const ClickHandler = () => {
-    const d = getYmd10(startDate)
-    console.log(startDate, todo, d)
-  }
-  // console.log(moment().format('YY-MM-DD'))
   return (
     <div className={styles.form}>
       <div className={styles.todoForm}>
@@ -72,9 +66,6 @@ function TodoForm(props) {
             inline
           />
         )}
-        <button type='button' onClick={ClickHandler}>
-          데이터 확인용 버튼
-        </button>
       </div>
     </div>
   )

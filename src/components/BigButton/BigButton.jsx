@@ -1,14 +1,20 @@
 import { UpperArrow } from '../../assets/svgs/index'
 import styles from './BigButton.module.scss'
+import PropTypes from 'prop-types'
 
-// eslint-disable-next-line react/prop-types
-function BigButton({ text, onClick }) {
+function BigButton({ text, type = 'button' }) {
   return (
-    <button type='button' className={styles.button} onClick={onClick}>
+    // eslint-disable-next-line react/button-has-type
+    <button type={type} className={styles.button}>
       <span className={styles.buttonText}>{text}</span>
       <UpperArrow />
     </button>
   )
+}
+
+BigButton.propTypes = {
+  text: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['submit', 'button', 'reset']),
 }
 
 export default BigButton

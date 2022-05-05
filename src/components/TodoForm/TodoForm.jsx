@@ -1,78 +1,91 @@
+import date from 'date-and-time'
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import { useNavigate } from 'react-router-dom'
 import { Calendar } from '../../assets/svgs'
 import BigButton from '../BigButton/BigButton'
 import styles from './TodoForm.module.scss'
 
-// eslint-disable-next-line react/prop-types
-function TodoForm({ todoValue, todoDate }) {
-  const [inputValue, setInputValue] = useState('')
-  const [date, setdate] = useState(todoDate || new Date())
+const today = date.format(new Date(), 'YYYY-MM-DD')
+function TodoForm({ todoValue = '', todoDate, setTodoList, type }) {
+  const navigate = useNavigate()
+  const [inputValue, setInputValue] = useState(todoValue)
+  const [selectedDate, setSelectedDate] = useState(todoDate || today)
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleValue = (e) => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const newTodo = {
+      id: new Date().getTime(),
+      title: inputValue,
+      date: selectedDate,
+      done: false,
+    }
+    if (type === 'add') {
+      setTodoList((prev) => [...prev, newTodo])
+    }
+    // TODO:수정
+
+    alert('todo 추가됬어요!')
+    navigate('/')
+  }
+
+  const handleInputChange = (e) => {
     setInputValue(e.currentTarget.value)
   }
 
-  const handleAdd = () => {
-    inputValue !== '' && localStorage.setItem(date, inputValue)
-    setInputValue('')
+  // datePicker click
+  const handleDatePickerOpen = () => {
+    setIsOpen((_isOpen) => !_isOpen)
   }
 
-  // datePicker click
-  const dateClickHandler = () => {
-    setIsOpen((_isOpen) => !_isOpen)
-  }
   // date change
-  const dateChangeHandler = (_date) => {
+  const handleDateChange = (_date) => {
     setIsOpen((_isOpen) => !_isOpen)
-    setdate(_date)
-  }
-  // yyyy-mm-dd 포맷 날짜 생성
-  const getYmd10 = (d) => {
-    return `${d.getFullYear()}-${d.getMonth() + 1 > 9 ? (d.getMonth() + 1).toString() : `0${d.getMonth() + 1}`}-${
-      d.getDate() > 9 ? d.getDate().toString() : `0${d.getDate().toString()}`
-    }`
-  }
-  // date format 변경, 오늘날짜면 Today를 출력
-  const getDateformat = () => {
-    return getYmd10(date) === new Date(+new Date() + 3240 * 10000).toISOString().split('T')[0]
+    setSelectedDate(date.format(_date, 'YYYY-MM-DD'))
   }
 
   return (
     <div className={styles.todoForm}>
-      <div className={styles.addForm}>
+      <form onSubmit={handleSubmit} className={styles.addForm}>
         <input
           name='input'
           className={styles.addInput}
-          onChange={handleValue}
+          onChange={handleInputChange}
           value={inputValue}
           type='text'
-          placeholder={todoValue || 'Enter New task'}
+          placeholder='Enter New task'
         />
-        <button className={styles.datePickButton} type='button' onClick={dateClickHandler}>
+        <button className={styles.datePickButton} type='button' onClick={handleDatePickerOpen}>
           <span className={styles.calendarIcon}>
             <Calendar />
           </span>
-          <span>{getDateformat() ? 'Today' : getYmd10(date)}</span>
+          <span>{selectedDate === today ? 'Today' : selectedDate}</span>
         </button>
         {isOpen && (
           <DatePicker
             className={styles.datePicker}
             showPopperArrow={false}
-            selected={date}
-            onChange={dateChangeHandler}
+            selected={new Date(selectedDate)}
+            onChange={handleDateChange}
             dateFormat='YYYY-MM-dd'
             inline
           />
         )}
-      </div>
-      <div className={styles.footerButton}>
-        <BigButton text='New task' onClick={handleAdd} />
-      </div>
+        <div className={styles.footerButton}>
+          <BigButton text='New task' type='submit' />
+        </div>
+      </form>
     </div>
   )
 }
-
+TodoForm.propTypes = {
+  todoValue: PropTypes.string,
+  todoDate: PropTypes.string,
+  type: PropTypes.oneOf(['add', 'modify']).isRequired,
+  setTodoList: PropTypes.func.isRequired,
+}
 export default TodoForm

@@ -16,7 +16,9 @@
     font-weight: 600;
     color: colors.$BIG_TITLE;
   }
-
+  .centering {
+    height: 100%;
+  }
   .tasksTitle {
     margin: 30px 0 24px;
     font-size: 12px;
@@ -25,7 +27,13 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
-
+  .tasks {
+    display: flex;
+    flex-direction: column;
+    margin: 2px;
+    overflow: auto;
+    height: 75%;
+  }
   .task {
     display: flex;
     align-items: center;
@@ -81,6 +89,13 @@
       color: colors.$TASK_ITEM_TITLE;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+    .checked_todo {
+      overflow: hidden;
+      color: colors.$TASKS_TITLE;
+      white-space: nowrap;
+      text-decoration: line-through;
+      transition: 0.2s;
     }
   }
 

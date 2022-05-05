@@ -13,7 +13,6 @@ function TodoList() {
     () => (todoToggle ? todoList.filter(({ done }) => !done) : todoList),
     [todoToggle, todoList]
   )
-
   const handleAddClick = (e) => {
     // console.log('handleAddClick')
   }
@@ -26,6 +25,7 @@ function TodoList() {
       const targetIndex = prev.findIndex((todo) => todo.id === Number(id))
       const newList = [...prev]
       newList[targetIndex].done = checked
+
       return newList
     })
   }
@@ -44,6 +44,9 @@ function TodoList() {
     <div className={styles.todoList}>
       <div className={styles.centering}>
         <h1>Hi! this is your assignment.</h1>
+        <p className={styles.tasksTitle}>Today&apos;s</p>
+        <input type='checkbox' className={styles.toggle} id='toggle' onChange={handleToggle} />
+        <label htmlFor='toggle'>toggle</label>
         <ul className={styles.tasks}>
           <p className={styles.tasksTitle}>Today&apos;s</p>
           <input type='checkbox' className={styles.toggle} id='toggle' onChange={handleToggle} />
@@ -54,8 +57,8 @@ function TodoList() {
                 <input type='checkbox' checked={todo.done} data-id={todo.id} onChange={handleChange} />
                 <CheckIcon />
               </div>
-              <p className={styles.title}>{todo.title}</p>
-              <button type='button' data-id={todo.id} onClick={handleDelete}>
+              <p className={`${todo.done ? styles.checked_todo : styles.title}`}>{todo.title}</p>
+              <button type='button' data-id={todo.id} onClick={handleDelete} aria-label='Delete button'>
                 X
               </button>
             </li>
@@ -66,5 +69,4 @@ function TodoList() {
     </div>
   )
 }
-
 export default TodoList

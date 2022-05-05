@@ -6,23 +6,34 @@ import DUMMY from '../../data/todos.json'
 
 const INIT_TODO = DUMMY
 
+const TOGGLE_TAB = [
+  {
+    id: 0,
+    name: 'All'
+  },
+  {
+    id: 1,
+    name: 'Active'
+  },
+  {
+    id: 2,
+    name: 'Completed'
+  },
+]
+
 function TodoList() {
   const [todoList, setTodoList] = useState(INIT_TODO)
-  const [todoToggle, setTodoToggle] = useState("Alltoggle")
+  const [todoToggle, setTodoToggle] = useState(0)
   
   const filteredList = useMemo(() => {
-    if (todoToggle==="Alltoggle") {
+    if (todoToggle === 0) {
       return todoList
+    } if (todoToggle === 1) {
+      return todoList.filter(({ done }) => done === false)
+    } if(todoToggle === 2) {
+      return todoList.filter(({ done }) => done === true)
     }
 
-    if(todoToggle==="Activetoggle") {
-      return todoList.filter(({ done }) => done===true)
-    }
-
-    if (todoToggle === 'Completedtoggle'){
-      return todoList.filter(({ done }) => done===false)
-    }
-    
     return null
   }, [todoToggle, todoList])
   
@@ -50,7 +61,9 @@ function TodoList() {
   }
 
   const handleToggle = (e) => {
-    setTodoToggle(e.currentTarget.id)
+    const { id } = e.currentTarget.dataset 
+    
+    setTodoToggle(Number(id))
   }
 
   return (
@@ -60,12 +73,10 @@ function TodoList() {
         <p className={styles.tasksTitle}>Today&apos;s</p>
 
         <div className={styles.toggleInputWrapper}>
-          <input type='checkbox' id='Alltoggle' onChange={handleToggle} />
-          <label htmlFor='Alltoggle' className={styles.toggleLabel}>All</label>
-          <input type='checkbox' id='Activetoggle' onChange={handleToggle} />
-          <label htmlFor='Activetoggle' className={styles.toggleLabel}>Active</label>
-          <input type='checkbox' id='Completedtoggle' onChange={handleToggle} />
-          <label htmlFor='Completedtoggle' className={styles.toggleLabel}>Completed</label>
+          {TOGGLE_TAB.map(({id, name}) => (
+            <button key={`toggle-${id}`} type='button' data-id={id} 
+            className={cx(styles.toggleTab, {[styles.activeTab]: id === todoToggle})} onClick={handleToggle}>{name}</button>
+          ))}
         </div>
         
         <ul className={styles.tasks}>

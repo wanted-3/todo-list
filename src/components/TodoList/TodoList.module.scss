@@ -38,15 +38,19 @@
     color: colors.$TASKS_TITLE;
   }
 
-  .toggleLabel {
+  .toggleTab {
     width: 100px;
     padding: 4px;
     text-align: center;
     border-radius: 3px;
 
     &:hover {
-      cursor: pointer;
-      outline: 2px solid colors.$TASKS_TITLE;
+      color: colors.$BLUE;
+    }
+
+    &.activeTab {
+      font-weight: 600;
+      color: colors.$BLUE;
     }
   }
 

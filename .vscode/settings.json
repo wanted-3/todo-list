@@ -1,7 +1,10 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
   },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
@@ -9,4 +12,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
+  "stylelint.validate": [
+    "css",
+    "less",
+    "postcss",
+    "scss"
+  ]
 }

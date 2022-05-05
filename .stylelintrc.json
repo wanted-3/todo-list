@@ -1,12 +1,20 @@
 {
-  "extends": ["stylelint-config-standard-scss", "stylelint-config-recess-order"],
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-recess-order"
+  ],
   "overrides": [
     {
-      "files": ["**/*.scss"],
+      "files": [
+        "**/*.scss"
+      ],
       "customSyntax": "postcss-scss"
     }
   ],
-  "plugins": ["stylelint-declaration-strict-value"],
+  "plugins": [
+    "stylelint-declaration-strict-value",
+    "stylelint-scss"
+  ],
   "rules": {
     "at-rule-empty-line-before": null,
     "color-function-notation": "legacy",
@@ -17,7 +25,9 @@
     "function-name-case": [
       "lower",
       {
-        "ignoreFunctions": "/^[a-z_](|[a-zA-Z0-9]+)$/"
+        "ignoreFunctions": [
+          "/^[a-z_](|[a-zA-Z0-9]+)$/"
+        ]
       }
     ],
     "keyframes-name-pattern": "^[a-z][a-zA-Z0-9_]+$",
@@ -28,13 +38,18 @@
     "property-no-vendor-prefix": [
       true,
       {
-        "ignoreProperties": ["appearance"]
+        "ignoreProperties": [
+          "appearance"
+        ]
       }
     ],
     "scale-unlimited/declaration-strict-value": [
       "color",
       {
-        "ignoreValues": ["inherit", "initial"]
+        "ignoreValues": [
+          "inherit",
+          "initial"
+        ]
       }
     ],
     "scss/at-function-pattern": "^[a-z_](|[a-zA-Z0-9-]+)$",
@@ -52,7 +67,9 @@
     "selector-pseudo-class-no-unknown": [
       true,
       {
-        "ignorePseudoClasses": ["global"]
+        "ignorePseudoClasses": [
+          "global"
+        ]
       }
     ],
     "string-quotes": "single"

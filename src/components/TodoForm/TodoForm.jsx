@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import BigButton from '../BigButton/BigButton'
+import { useState } from 'react'
 import DatePicker from 'react-datepicker'
-import { Calendar } from '../../assets/svgs'
-import styles from './TodoForm.module.scss'
 import 'react-datepicker/dist/react-datepicker.css'
-import PropsTypes from 'prop-types'
+import { Calendar } from '../../assets/svgs'
+import BigButton from '../BigButton/BigButton'
+import styles from './TodoForm.module.scss'
 
 // eslint-disable-next-line react/prop-types
 function TodoForm({ todoValue, todoDate }) {
@@ -22,13 +21,13 @@ function TodoForm({ todoValue, todoDate }) {
   }
 
   // datePicker click
-  const dateClickHandler = (e) => {
-    setIsOpen((isOpen) => !isOpen)
+  const dateClickHandler = () => {
+    setIsOpen((_isOpen) => !_isOpen)
   }
   // date change
-  const dateChangeHandler = (date) => {
-    setIsOpen((isOpen) => !isOpen)
-    setdate(date)
+  const dateChangeHandler = (_date) => {
+    setIsOpen((_isOpen) => !_isOpen)
+    setdate(_date)
   }
   // yyyy-mm-dd 포맷 날짜 생성
   const getYmd10 = (d) => {

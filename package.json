@@ -20,7 +20,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "stylelint": "stylelint **/*.scss"
+    "stylelint": "stylelint **/*.scss",
+    "eslint": "eslint --fix src/**/*.js src/**/*.jsx",
+    "prettier": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -63,6 +65,7 @@
     "stylelint": "^14.8.1",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard-scss": "^3.0.0",
-    "stylelint-declaration-strict-value": "^1.8.0"
+    "stylelint-declaration-strict-value": "^1.8.0",
+    "stylelint-scss": "^4.2.0"
   }
 }

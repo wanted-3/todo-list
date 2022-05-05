@@ -1,5 +1,5 @@
 import { XIcon } from '../../assets/svgs'
-import styles from './smallButton.module.scss'
+import styles from './SmallButton.module.scss'
 
 function SmallButton() {
   return (

@@ -1,5 +1,8 @@
 export { ReactComponent as LogoImage } from './logo.svg'
 export { ReactComponent as CheckIcon } from './check.svg'
+export { ReactComponent as MenuIcon } from './menu.svg'
+export { ReactComponent as SearchIcon } from './search.svg'
+export { ReactComponent as ArrowLeftIcon } from './arrowLeft.svg'
 export { ReactComponent as CloseIcon } from './ic_close.svg'
 export { ReactComponent as XIcon } from './xIcon.svg'
 export { ReactComponent as UpperArrow } from './upperArrow.svg'

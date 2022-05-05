@@ -115,7 +115,7 @@
       width: 100%;
       overflow: hidden;
       color: colors.$TASKS_TITLE;
-      text-decoration: line-through;
+      text-overflow: ellipsis;
       white-space: nowrap;
 
       &.checked {

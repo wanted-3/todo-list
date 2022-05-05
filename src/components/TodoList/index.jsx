@@ -26,15 +26,16 @@ function TodoList() {
   const [todoToggle, setTodoToggle] = useState(0)
   
   const filteredList = useMemo(() => {
-    if (todoToggle === 0) {
-      return todoList
-    } if (todoToggle === 1) {
-      return todoList.filter(({ done }) => done === false)
-    } if(todoToggle === 2) {
-      return todoList.filter(({ done }) => done === true)
+    switch (todoToggle) {
+      case 0:
+        return todoList
+      case 1:
+        return todoList.filter(({done}) => done === false)
+      case 2:
+        return todoList.filter(({done}) => done === true)
+      default:
+        return null
     }
-
-    return null
   }, [todoToggle, todoList])
   
   const handleAddClick = (e) => {

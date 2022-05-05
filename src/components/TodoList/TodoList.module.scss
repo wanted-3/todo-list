@@ -40,8 +40,7 @@
   }
 
   .task {
-    display: flex;
-    align-items: center;
+    @include flexbox.flexbox(between, center);
     height: 72px;
     line-height: 72px;
     background-color: colors.$WHITE;
@@ -90,6 +89,7 @@
     }
 
     .title {
+      width: 100%;
       overflow: hidden;
       color: colors.$TASK_ITEM_TITLE;
       text-overflow: ellipsis;
@@ -99,6 +99,14 @@
         color: colors.$TASKS_TITLE;
         text-decoration: line-through;
         transition: 0.2s;
+      }
+    }
+
+    .deleteButton{
+      padding-right: 14px;
+      svg {
+        width: 18px;
+        height: 18px;
       }
     }
   }

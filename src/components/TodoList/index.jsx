@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './TodoList.module.scss'
 import { CheckIcon } from '../../assets/svgs'
 import DUMMY from '../../data/todos.json'
+import { Link } from 'react-router-dom'
 
 const INIT_TODO = DUMMY
 
@@ -40,7 +41,10 @@ function TodoList() {
             </li>
           ))}
         </ul>
-        <button type='button' className={styles.addButton} onClick={handleAddClick} aria-label='Add button' />
+        <Link to='/todo/add'>
+          <button type='button' className={styles.addButton} onClick={handleAddClick} aria-label='Add button' />
+        </Link>
+        
       </div>
     </div>
   )

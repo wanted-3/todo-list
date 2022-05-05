@@ -6,12 +6,12 @@ import styles from './AddTodo.module.scss'
 function AddTodo() {
   return (
     <div className={styles.addTodoPage}>
-        <div className={styles.button}>
-          <Link to="/">
-            <SmallButton />
-          </Link>
-        </div>
-        <TodoForm />
+      <div className={styles.button}>
+        <Link to="/">
+          <SmallButton />
+        </Link>
+      </div>
+      <TodoForm />
     </div>
   )
 }

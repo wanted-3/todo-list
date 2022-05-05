@@ -3,6 +3,7 @@ import BigButton from '../BigButton/BigButton'
 import DatePicker from 'react-datepicker'
 import { Calendar } from '../../assets/svgs'
 import styles from './TodoForm.module.scss'
+import 'react-datepicker/dist/react-datepicker.css'
 
 function TodoForm() {
   const [inputValue, setInputValue] = useState('')

@@ -5,7 +5,7 @@ function SmallButton() {
   return (
     <div className={styles.smallBContainer}>
       <button type='button' className={styles.closeButton}>
-        <XIcon className={styles.xicon} />
+        <XIcon />
       </button>
     </div>
   )

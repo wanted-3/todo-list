@@ -1,10 +1,10 @@
+@use '/src/styles/mixins/flexbox';
 @use '/src/styles/constants/sizes';
 @use '/src/styles/constants/colors';
 
 .container {
-  display: flex;
+  @include flexbox.flexbox(center, center);
   gap: 10px;
-  align-items: center;
   width: 100%;
   height: sizes.$HEADER_HEIGHT;
 }
@@ -13,6 +13,7 @@
   display: flex;
   flex-grow: 1;
   align-items: center;
+  justify-content: center;
   height: 30px;
   padding: 0.7rem 1rem;
   border: 1px solid colors.$GRAYE;
@@ -32,8 +33,10 @@
 
 .button {
   position: relative;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
   color: colors.$GRAY3;
 
   &:focus:focus-visible {

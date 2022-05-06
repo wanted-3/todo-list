@@ -6,7 +6,7 @@ import styles from './TodoForm.module.scss'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
-function TodoForm({ data, modifyMode }) {
+function TodoForm({ data }) {
   const [inputValue, setInputValue] = useState(data.content)
   const [date, setdate] = useState(new Date())
   const [isOpen, setIsOpen] = useState({
@@ -61,14 +61,14 @@ function TodoForm({ data, modifyMode }) {
           type='text'
           placeholder='Enter new task'
         />
-        {!modifyMode && (
-          <button className={styles.datePickButton} type='button' onClick={dateClickHandler}>
-            <span className={styles.calendarIcon}>
-              <Calendar />
-            </span>
-            <span>{getDateformat() ? 'Today' : getYmd10(date)}</span>
-          </button>
-        )}
+
+        <button className={styles.datePickButton} type='button' onClick={dateClickHandler}>
+          <span className={styles.calendarIcon}>
+            <Calendar />
+          </span>
+          <span>{getDateformat() ? 'Today' : getYmd10(date)}</span>
+        </button>
+
         {isOpen.calendar && (
           <DatePicker
             className={styles.datePicker}

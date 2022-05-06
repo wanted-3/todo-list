@@ -4,8 +4,8 @@
 @use '/src/styles/mixins/position';
 
 .closeButton {
-  width: 35px;
-  height: 35px;
+  width: 66px;
+  height: 66px;
   background-color: colors.$BLUE;
   border-radius: 50%;
   box-shadow: 0 10px 20px 0 rgba(colors.$BLACK, 15%);

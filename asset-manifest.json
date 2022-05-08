@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/todo-list/static/css/main.854134e2.css",
+    "main.js": "/todo-list/static/js/main.6726e167.js",
+    "static/media/logo.svg": "/todo-list/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/calendar.svg": "/todo-list/static/media/calendar.c54cef67d97ba63f5e5ea6729231e70f.svg",
+    "index.html": "/todo-list/index.html",
+    "static/media/xIcon.svg": "/todo-list/static/media/xIcon.56d42799bf8669a6cbc7f43728d6b808.svg",
+    "static/media/upperArrow.svg": "/todo-list/static/media/upperArrow.9e8a0a15d838ccbc06df0dfb2116b5c8.svg",
+    "static/media/check.svg": "/todo-list/static/media/check.9f1e9f1c65d56f327fb5297428926abc.svg",
+    "static/media/ic_close.svg": "/todo-list/static/media/ic_close.866a639d87b4ac4dbf7d60141b7fec74.svg",
+    "static/media/arrowLeft.svg": "/todo-list/static/media/arrowLeft.1719d9a2b4b1ae7e009a598f8938f60b.svg",
+    "static/media/search.svg": "/todo-list/static/media/search.4248e3257a02d4928d71fcbec2f02205.svg",
+    "static/media/menu.svg": "/todo-list/static/media/menu.7c62cf0c2ce6eaae6f80a1a1993f76e2.svg",
+    "main.854134e2.css.map": "/todo-list/static/css/main.854134e2.css.map",
+    "main.6726e167.js.map": "/todo-list/static/js/main.6726e167.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.854134e2.css",
+    "static/js/main.6726e167.js"
+  ]
+}
